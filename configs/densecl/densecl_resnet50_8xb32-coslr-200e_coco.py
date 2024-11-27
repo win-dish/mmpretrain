@@ -56,9 +56,9 @@ train_dataloader = dict(
     collate_fn=dict(type='default_collate'),
     dataset=dict(
         type='CustomDataset',
-        data_root='/mnt/c/Users/i0011180/Data/coco2017/',
-        #split='train',
-        pipeline=train_pipeline))
+        data_root='/mnt/c/Users/i0011180/Data/coco2017/train2017/',
+        pipeline=train_pipeline,
+        with_label=False))
 
 # model settings
 model = dict(
@@ -88,7 +88,7 @@ find_unused_parameters = True
 # runtime settings
 default_hooks = dict(
     # only keeps the latest 3 checkpoints
-    checkpoint=dict(type='CheckpointHook', interval=10, max_keep_ckpts=3))
+    checkpoint=dict(type='CheckpointHook', interval=1, max_keep_ckpts=3))
 
 # NOTE: `auto_scale_lr` is for automatically scaling LR
 # based on the actual training batch size.
