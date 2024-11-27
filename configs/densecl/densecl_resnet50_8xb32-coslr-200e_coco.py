@@ -17,17 +17,17 @@ view_pipeline = [
         scale=224,
         crop_ratio_range=(0.2, 1.),
         backend='pillow'),
-    #dict(
-    #    type='RandomApply',
-    #    transforms=[
-    #        dict(
-    #            type='ColorJitter',
-    #            brightness=0.4,
-    #            contrast=0.4,
-    #            saturation=0.4,
-    #            hue=0.1)
-    #    ],
-    #    prob=0.8),
+    dict(
+        type='RandomApply',
+        transforms=[
+            dict(
+                type='ColorJitter',
+                brightness=0.4,
+                contrast=0.4,
+                saturation=0.4,
+                hue=0.1)
+        ],
+        prob=0.8),
     dict(
         type='RandomGrayscale',
         prob=0.2,

@@ -69,3 +69,8 @@ This document provides step-by-step instructions for setting up custom configura
 
 - For **supervised tasks**, ensure the `ann_file` and `data_prefix` are correctly configured.
 - For **unsupervised tasks**, set `with_label=False` and organize data according to the directory structure mentioned above.
+
+### 3. ColorJitter Augmentation
+
+The ColorJitter Augmentation changes the Hue of an Image with a probability of 80%. But in the mmcv file there is an error. When installing mmcv, you have to modify this file:
+`mmcv/image/photometric.py` in line 546 replace `np_h += np.uint8(hue_factor * 255)` with `np_h += np.int32(hue_factor * 255).astype(np.uint8)` since the original code provocates an Overflow Error.
